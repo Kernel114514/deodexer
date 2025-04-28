@@ -1,0 +1,29 @@
+name: clone edk2-msm
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 */2 * *" 
+
+jobs:
+  Build-TWRP:
+    name: clone
+    runs-on: ubuntu-22.04
+    steps:
+      - name: ♉ Prepare the build environment
+        run: |
+          cd ~
+          sudo apt update -y
+          sudo apt install git -y
+          git clone --recursive https://github.com/Kernel114514/deodexer deodexer-xd
+          cd deodexer-xd
+          chmod a+x setup.sh
+          bash setup.sh
+      - name: ♎ Take the OrangeFox build
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: OrangeFox
+          if-no-files-found: warn
+          include-hidden-files: true
+          path: |
+            ~/deodexer-xd
