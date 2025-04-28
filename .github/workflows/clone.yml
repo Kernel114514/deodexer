@@ -1,4 +1,4 @@
-name: clone edk2-msm
+name: clone xd
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
         run: |
           cd ~
           sudo apt update -y
-          sudo apt install git -y
+          sudo apt install git axel -y
           git clone --recursive https://github.com/Kernel114514/deodexer deodexer-xd
           cd deodexer-xd
           chmod a+x setup.sh
