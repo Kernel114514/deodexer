@@ -7,7 +7,7 @@ cd $MYDIR
 
 GITHUB_TOKEN=$1
 
-git clone https://github.com/anestisb/vdexExtractor
+git clone https://github.com/RJMultiDev/vdexExtractor -b patch-1
 
 cd vdexExtractor
 ./make.sh
